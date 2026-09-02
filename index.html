@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="./favicon.ico" />
+    <!-- Preload is necessary because we show these images when we disconnect from the server,
+    but at that point we cannot load these images from the server -->
+    <link rel="preload" href="./assets/gradient-yHQUC_QB.png" as="image" />
+    <link rel="preload" href="./assets/noise-60BoTA8O.png" as="image" />
+    <!-- Preload the fonts -->
+    <link rel="preload" href="./assets/Lora-VariableFont_wght-CZceb_kH.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href="./assets/PTSans-Regular-Bam3NpBI.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href="./assets/PTSans-Bold-C_DwAp7Z.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href="./assets/FiraMono-Regular-CEsLFVD9.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href="./assets/FiraMono-Medium-D5MAsWEG.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href="./assets/FiraMono-Bold-C6PDArdf.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="a marimo app" />
+    <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
+    <link rel="manifest" href="./manifest.json" />
+
+    <script data-marimo="true">
+      function __resizeIframe(obj) {
+        const scrollbarHeight = 20; // Max between windows, mac, and linux
+
+        function setHeight() {
+          // Guard against race condition where iframe isn't ready
+          if (!obj.contentWindow?.document?.documentElement) {
+            return;
+          }
+          const element = obj.contentWindow.document.documentElement;
+          // If there is no vertical scrollbar, we don't need to resize the iframe
+          if (element.scrollHeight === element.clientHeight) {
+            return;
+          }
+
+          // Create a new height that includes the scrollbar height if it's visible
+          const hasHorizontalScrollbar = element.scrollWidth > element.clientWidth;
+          const newHeight = element.scrollHeight + (hasHorizontalScrollbar ? scrollbarHeight : 0);
+
+          // Only update the height if it's different from the current height
+          if (obj.style.height !== `${newHeight}px`) {
+            obj.style.height = `${newHeight}px`;
+          }
+        }
+
+        // Resize the iframe to the height of the content and bottom scrollbar height
+        setHeight();
+
+        // Resize the iframe when the content changes
+        const resizeObserver = new ResizeObserver((_entries) => {
+          setHeight();
+        });
+        // Only observe if iframe content is ready
+        if (obj.contentWindow?.document?.body) {
+          resizeObserver.observe(obj.contentWindow.document.body);
+        }
+      }
+    </script>
+    <marimo-filename hidden>notebook.py</marimo-filename>
+    <!-- TODO(Trevor): Legacy, required by VS Code plugin. Remove when plugin is updated (see marimo/server/_templates/template.py) -->
+    <marimo-version data-version="{{ version }}" hidden></marimo-version>
+    <marimo-user-config data-config="{{ user_config }}" hidden></marimo-user-config>
+    <marimo-server-token data-token="{{ server_token }}" hidden></marimo-server-token>
+    <!-- /TODO -->
+    <title>three kernel basketball marimo</title>
+    <script type="module" crossorigin src="./assets/index-C5WESBbZ.js"></script>
+    <link rel="modulepreload" crossorigin href="./assets/preload-helper-BPPi7vOr.js">
+    <link rel="modulepreload" crossorigin href="./assets/objects-CrbstYTV.js">
+    <link rel="modulepreload" crossorigin href="./assets/chunk-C4rtOYze.js">
+    <link rel="modulepreload" crossorigin href="./assets/react-C60yClUi.js">
+    <link rel="modulepreload" crossorigin href="./assets/compiler-runtime-DnimoHo0.js">
+    <link rel="modulepreload" crossorigin href="./assets/jsx-runtime-3wZU7vFS.js">
+    <link rel="modulepreload" crossorigin href="./assets/useEventListener-DpNnLPuE.js">
+    <link rel="modulepreload" crossorigin href="./assets/defaultLocale-CGJY8D9C.js">
+    <link rel="modulepreload" crossorigin href="./assets/precisionRound-DQz5N1zm.js">
+    <link rel="modulepreload" crossorigin href="./assets/defaultLocale-DzliDDTm.js">
+    <link rel="modulepreload" crossorigin href="./assets/vega-loader.browser-DLY285WP.js">
+    <link rel="modulepreload" crossorigin href="./assets/tooltip-BUmTS76K.js">
+    <link rel="modulepreload" crossorigin href="./assets/clsx-Dz_KRrWq.js">
+    <link rel="modulepreload" crossorigin href="./assets/cn-DCUzRj2J.js">
+    <link rel="modulepreload" crossorigin href="./assets/badge-D28DMr4y.js">
+    <link rel="modulepreload" crossorigin href="./assets/button-W__YVea9.js">
+    <link rel="modulepreload" crossorigin href="./assets/react-dom-Ba2zmJWD.js">
+    <link rel="modulepreload" crossorigin href="./assets/fullscreen-CrevbcR_.js">
+    <link rel="modulepreload" crossorigin href="./assets/menu-items-B8lIBnFI.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-CFnrytEJ.js">
+    <link rel="modulepreload" crossorigin href="./assets/createLucideIcon-B8oVfJNp.js">
+    <link rel="modulepreload" crossorigin href="./assets/check-CyyJPf_5.js">
+    <link rel="modulepreload" crossorigin href="./assets/x-4y-nyVDU.js">
+    <link rel="modulepreload" crossorigin href="./assets/select-CPo-KTTe.js">
+    <link rel="modulepreload" crossorigin href="./assets/tooltip-C9LWGQ7Y.js">
+    <link rel="modulepreload" crossorigin href="./assets/use-toast-DjpWVza6.js">
+    <link rel="modulepreload" crossorigin href="./assets/useEvent-GCVIknuR.js">
+    <link rel="modulepreload" crossorigin href="./assets/invariant-BUdrueMv.js">
+    <link rel="modulepreload" crossorigin href="./assets/isObject-DvLSfCY5.js">
+    <link rel="modulepreload" crossorigin href="./assets/isArrayLikeObject-Dqg6_6m7.js">
+    <link rel="modulepreload" crossorigin href="./assets/_initCloneObject-7OOScFCJ.js">
+    <link rel="modulepreload" crossorigin href="./assets/merge-BK1opWhR.js">
+    <link rel="modulepreload" crossorigin href="./assets/zod-BIDX-mZr.js">
+    <link rel="modulepreload" crossorigin href="./assets/utils-C8Yt16Y7.js">
+    <link rel="modulepreload" crossorigin href="./assets/constants-DifUxsbZ.js">
+    <link rel="modulepreload" crossorigin href="./assets/session-D-SddyN0.js">
+    <link rel="modulepreload" crossorigin href="./assets/Deferred-CP7vq682.js">
+    <link rel="modulepreload" crossorigin href="./assets/config-EoJoeZuK.js">
+    <link rel="modulepreload" crossorigin href="./assets/uuid-e9lSomwA.js">
+    <link rel="modulepreload" crossorigin href="./assets/DeferredRequestRegistry-6TRSC3VZ.js">
+    <link rel="modulepreload" crossorigin href="./assets/requests-B9zEd_sW.js">
+    <link rel="modulepreload" crossorigin href="./assets/useLifecycle-DDwuYzlC.js">
+    <link rel="modulepreload" crossorigin href="./assets/useNonce-C2dwX-sI.js">
+    <link rel="modulepreload" crossorigin href="./assets/useTheme-CwCyrmDf.js">
+    <link rel="modulepreload" crossorigin href="./assets/arrays-UzzAzxsG.js">
+    <link rel="modulepreload" crossorigin href="./assets/strings-DmKKoXrM.js">
+    <link rel="modulepreload" crossorigin href="./assets/once-DNBWPkeJ.js">
+    <link rel="modulepreload" crossorigin href="./assets/capabilities-CHeZxy51.js">
+    <link rel="modulepreload" crossorigin href="./assets/createReducer-C1MhlItJ.js">
+    <link rel="modulepreload" crossorigin href="./assets/paths-D5zczhUD.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-CeF1Em5L.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-Di6rD-vJ.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-DanVWUek.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-BVNaV53g.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-BrqkjqDe.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-5bwTcyKs.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-BPoMypmC.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-Bm9PT5P9.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-BbqPy6oS.js">
+    <link rel="modulepreload" crossorigin href="./assets/stex-BGrE-q7N.js">
+    <link rel="modulepreload" crossorigin href="./assets/toDate-QOk09NqD.js">
+    <link rel="modulepreload" crossorigin href="./assets/purify.es-Bwm8T4QC.js">
+    <link rel="modulepreload" crossorigin href="./assets/cjs-DCKmcMBz.js">
+    <link rel="modulepreload" crossorigin href="./assets/isSymbol-BT6B8Bon.js">
+    <link rel="modulepreload" crossorigin href="./assets/now-CsYTPAhW.js">
+    <link rel="modulepreload" crossorigin href="./assets/debounce-DhnxH9Rh.js">
+    <link rel="modulepreload" crossorigin href="./assets/database-zap-n8PGHE18.js">
+    <link rel="modulepreload" crossorigin href="./assets/cells-DTFqEQb0.js">
+    <link rel="modulepreload" crossorigin href="./assets/kbd-PEowR7op.js">
+    <link rel="modulepreload" crossorigin href="./assets/useInstallPackage-D58nBaNf.js">
+    <link rel="modulepreload" crossorigin href="./assets/alert-dialog-D_kB5FIu.js">
+    <link rel="modulepreload" crossorigin href="./assets/dialog-WU4x2UpK.js">
+    <link rel="modulepreload" crossorigin href="./assets/useDebounce-BlgD22u_.js">
+    <link rel="modulepreload" crossorigin href="./assets/numbers-DtSpUdpO.js">
+    <link rel="modulepreload" crossorigin href="./assets/SSRProvider-CouFQxI2.js">
+    <link rel="modulepreload" crossorigin href="./assets/context-BJMN4ll3.js">
+    <link rel="modulepreload" crossorigin href="./assets/useNumberFormatter-xxZlcf11.js">
+    <link rel="modulepreload" crossorigin href="./assets/usePress-Bl6X9B5M.js">
+    <link rel="modulepreload" crossorigin href="./assets/input-BN98e517.js">
+    <link rel="modulepreload" crossorigin href="./assets/ImperativeModal-Dxj31V4A.js">
+    <link rel="modulepreload" crossorigin href="./assets/cell-link-D26WjdN1.js">
+    <link rel="modulepreload" crossorigin href="./assets/config-DjP9S1hr.js">
+    <link rel="modulepreload" crossorigin href="./assets/alert-CHWQT4zh.js">
+    <link rel="modulepreload" crossorigin href="./assets/chevron-right-C9ZBG6Lx.js">
+    <link rel="modulepreload" crossorigin href="./assets/dropdown-menu-DWGvf_Bw.js">
+    <link rel="modulepreload" crossorigin href="./assets/links-BeU4kHTI.js">
+    <link rel="modulepreload" crossorigin href="./assets/useRunCells-BpZ_0Xuz.js">
+    <link rel="modulepreload" crossorigin href="./assets/copy-HCSOwOwk.js">
+    <link rel="modulepreload" crossorigin href="./assets/copy-DlR5UiIE.js">
+    <link rel="modulepreload" crossorigin href="./assets/copy-icon-Cn8LzPNx.js">
+    <link rel="modulepreload" crossorigin href="./assets/RenderHTML-X9kskQZ0.js">
+    <link rel="modulepreload" crossorigin href="./assets/datasource-DZgUyqAK.js">
+    <link rel="modulepreload" crossorigin href="./assets/state-ByxLiTvP.js">
+    <link rel="modulepreload" crossorigin href="./assets/hat-glasses-xLTnAC_n.js">
+    <link rel="modulepreload" crossorigin href="./assets/package-ROei-DG7.js">
+    <link rel="modulepreload" crossorigin href="./assets/sparkles-DwqcWrJl.js">
+    <link rel="modulepreload" crossorigin href="./assets/MarimoErrorOutput-BVdFtnJz.js">
+    <link rel="modulepreload" crossorigin href="./assets/ErrorBoundary-B392qglD.js">
+    <link rel="modulepreload" crossorigin href="./assets/eye-off-DfXRjba3.js">
+    <link rel="modulepreload" crossorigin href="./assets/refresh-cw-DPUCy0Ep.js">
+    <link rel="modulepreload" crossorigin href="./assets/tree-actions-DUAdNn1i.js">
+    <link rel="modulepreload" crossorigin href="./assets/spinner-Cj3eM5bt.js">
+    <link rel="modulepreload" crossorigin href="./assets/html-to-image-BsXiWo0v.js">
+    <link rel="modulepreload" crossorigin href="./assets/focus-BTlyH5K_.js">
+    <link rel="modulepreload" crossorigin href="./assets/useAsyncData-BcvSvTUt.js">
+    <link rel="modulepreload" crossorigin href="./assets/LazyAnyLanguageCodeMirror-DUvRReKp.js">
+    <link rel="modulepreload" crossorigin href="./assets/micromark-factory-space-D4wN6pqE.js">
+    <link rel="modulepreload" crossorigin href="./assets/chunk-5FQGJX7Z-B4N_BMo6.js">
+    <link rel="modulepreload" crossorigin href="./assets/markdown-renderer-BjuEVUOa.js">
+    <link rel="modulepreload" crossorigin href="./assets/command-D5LtSvbN.js">
+    <link rel="modulepreload" crossorigin href="./assets/field-BPfggvql.js">
+    <link rel="modulepreload" crossorigin href="./assets/popover-B96fOqfH.js">
+    <link rel="modulepreload" crossorigin href="./assets/errors-D93OkQw8.js">
+    <link rel="modulepreload" crossorigin href="./assets/download-_oAlkvj6.js">
+    <link rel="modulepreload" crossorigin href="./assets/table-xPvP31p3.js">
+    <link rel="modulepreload" crossorigin href="./assets/useIframeCapabilities-DBacdN1t.js">
+    <link rel="modulepreload" crossorigin href="./assets/error-banner-d0-XOKtd.js">
+    <link rel="modulepreload" crossorigin href="./assets/formats-CydJsDOc.js">
+    <link rel="modulepreload" crossorigin href="./assets/utils-Y4n-X10o.js">
+    <link rel="modulepreload" crossorigin href="./assets/en-US-orJ4dPbF.js">
+    <link rel="modulepreload" crossorigin href="./assets/isValid-BmtlFqSa.js">
+    <link rel="modulepreload" crossorigin href="./assets/dates-CZTDC2tF.js">
+    <link rel="modulepreload" crossorigin href="./assets/extends-BiFDv3jB.js">
+    <link rel="modulepreload" crossorigin href="./assets/emotion-is-prop-valid.esm-C59xfSYt.js">
+    <link rel="modulepreload" crossorigin href="./assets/useDateFormatter-Cxnn3tJh.js">
+    <link rel="modulepreload" crossorigin href="./assets/react-icons.esm-CsgEZOQ_.js">
+    <link rel="modulepreload" crossorigin href="./assets/RSPContexts-oeZyXDWd.js">
+    <link rel="modulepreload" crossorigin href="./assets/table-FVnUU4--.js">
+    <link rel="modulepreload" crossorigin href="./assets/ellipsis-CUbXmdb-.js">
+    <link rel="modulepreload" crossorigin href="./assets/external-link-C8y9rFms.js">
+    <link rel="modulepreload" crossorigin href="./assets/message-circle-DJwyqZtq.js">
+    <link rel="modulepreload" crossorigin href="./assets/plus-r1QITpsJ.js">
+    <link rel="modulepreload" crossorigin href="./assets/trash-2-BLxp8uxj.js">
+    <link rel="modulepreload" crossorigin href="./assets/react-resizable-panels.browser.esm-CLaR27oP.js">
+    <link rel="modulepreload" crossorigin href="./assets/JsonOutput-DnrBQBRT.js">
+    <link rel="modulepreload" crossorigin href="./assets/chart-no-axes-column-eb23KpAk.js">
+    <link rel="modulepreload" crossorigin href="./assets/square-function-ypIvDL4C.js">
+    <link rel="modulepreload" crossorigin href="./assets/spec-NeCHOv2Z.js">
+    <link rel="modulepreload" crossorigin href="./assets/column-preview-BLap3eAk.js">
+    <link rel="modulepreload" crossorigin href="./assets/icons-BwSNDWAP.js">
+    <link rel="modulepreload" crossorigin href="./assets/radio-group-5KDs5aO1.js">
+    <link rel="modulepreload" crossorigin href="./assets/floating-outline-Vqr5D17R.js">
+    <link rel="modulepreload" crossorigin href="./assets/switch-CDT2KH2g.js">
+    <link rel="modulepreload" crossorigin href="./assets/objectWithoutPropertiesLoose-DfWeGRFv.js">
+    <link rel="modulepreload" crossorigin href="./assets/esm-RBKN8Dn2.js">
+    <link rel="modulepreload" crossorigin href="./assets/readonly-python-code-BV8otm7e.js">
+    <link rel="modulepreload" crossorigin href="./assets/file-headphone-BjKz3ZV1.js">
+    <link rel="modulepreload" crossorigin href="./assets/file-BjlLTeSV.js">
+    <link rel="modulepreload" crossorigin href="./assets/image-Dvcyi0uu.js">
+    <link rel="modulepreload" crossorigin href="./assets/file-icons-V3puz20c.js">
+    <link rel="modulepreload" crossorigin href="./assets/events-CPoJAfgx.js">
+    <link rel="modulepreload" crossorigin href="./assets/share-c5Zh8BM8.js">
+    <link rel="modulepreload" crossorigin href="./assets/blob-BKW9TqBu.js">
+    <link rel="modulepreload" crossorigin href="./assets/get-DuxuLRGI.js">
+    <link rel="modulepreload" crossorigin href="./assets/_baseSet-DehVzRp6.js">
+    <link rel="modulepreload" crossorigin href="./assets/state-Ci7n55A9.js">
+    <link rel="modulepreload" crossorigin href="./assets/label-BOFHwHn7.js">
+    <link rel="modulepreload" crossorigin href="./assets/form-Bb1JVuzT.js">
+    <link rel="modulepreload" crossorigin href="./assets/textarea-Bn1AMfsk.js">
+    <link rel="modulepreload" crossorigin href="./assets/refresh-ccw-neWzNbg7.js">
+    <link rel="modulepreload" crossorigin href="./assets/form-CRSnWxLR.js">
+    <link rel="modulepreload" crossorigin href="./assets/renderShortcut-C6HKXhBl.js">
+    <link rel="modulepreload" crossorigin href="./assets/useBoolean-CgN_4RAl.js">
+    <link rel="modulepreload" crossorigin href="./assets/markdown-export-D-ZHIs71.js">
+    <link rel="modulepreload" crossorigin href="./assets/useDeepCompareMemoize-CbFVGT0j.js">
+    <link rel="modulepreload" crossorigin href="./assets/types-D0D7HkQV.js">
+    <link rel="modulepreload" crossorigin href="./assets/semaphore-X3ApuO41.js">
+    <link rel="modulepreload" crossorigin href="./assets/fileToBase64-CBP8Y0AP.js">
+    <link rel="modulepreload" crossorigin href="./assets/pathUtils-BCwK34YQ.js">
+    <link rel="modulepreload" crossorigin href="./assets/prop-types-BH1URye0.js">
+    <link rel="modulepreload" crossorigin href="./assets/es-dmMPFhRH.js">
+    <link rel="modulepreload" crossorigin href="./assets/_hasPath-D0QK37mF.js">
+    <link rel="modulepreload" crossorigin href="./assets/hasIn-DrYqVooW.js">
+    <link rel="modulepreload" crossorigin href="./assets/pick-Q2hMHnmn.js">
+    <link rel="modulepreload" crossorigin href="./assets/code-xml-COekUbUT.js">
+    <link rel="modulepreload" crossorigin href="./assets/globe-C2tUp3NL.js">
+    <link rel="modulepreload" crossorigin href="./assets/square-DVd8Y612.js">
+    <link rel="modulepreload" crossorigin href="./assets/triangle-alert-DGiOSARf.js">
+    <link rel="modulepreload" crossorigin href="./assets/bundle.esm-DTvm8QXy.js">
+    <link rel="stylesheet" crossorigin href="./assets/cells-BE1kpmPF.css">
+    <link rel="stylesheet" crossorigin href="./assets/markdown-renderer-DdDKmWlR.css">
+    <link rel="stylesheet" crossorigin href="./assets/JsonOutput-BQtz7-np.css">
+    <link rel="stylesheet" crossorigin href="./assets/index-WoaGtlKd.css">
+  <marimo-wasm hidden=""></marimo-wasm>
+    <script>
+        if (window.location.protocol === 'file:') {
+            alert('Warning: This file must be served by an HTTP server to function correctly.');
+        }
+    </script>
+    
+    <style>
+        #save-button {
+            display: none !important;
+        }
+        #filename-input {
+            display: none !important;
+        }
+    </style>
+    
+<script data-marimo="true">
+    Object.defineProperty(window, "__MARIMO_EXPORT_CONTEXT__", {
+        value: Object.freeze({
+            trusted: true,
+            notebookCode: "import marimo\n\n__generated_with = \"0.24.0\"\napp = marimo.App(width=\"full\")\n\n\n@app.cell\ndef _():\n    import warnings\n\n    import matplotlib.pyplot as plt\n    import numpy as np\n    from sklearn.gaussian_process import GaussianProcessClassifier\n    from sklearn.gaussian_process.kernels import ConstantKernel, RBF, WhiteKernel\n    from sklearn.metrics import (\n        accuracy_score,\n        classification_report,\n        confusion_matrix,\n        f1_score,\n        roc_auc_score,\n    )\n    from sklearn.model_selection import cross_val_score, train_test_split\n\n    warnings.filterwarnings(\"ignore\")\n    return (\n        ConstantKernel,\n        GaussianProcessClassifier,\n        RBF,\n        WhiteKernel,\n        accuracy_score,\n        classification_report,\n        confusion_matrix,\n        cross_val_score,\n        f1_score,\n        np,\n        plt,\n        roc_auc_score,\n        train_test_split,\n    )\n\n\n@app.cell\ndef _(np):\n    def generate_basketball_data(n_samples=500, noise=0.1, random_state=42):\n        np.random.seed(random_state)\n        positions = np.zeros((n_samples, 2, 5, 2))\n        labels = np.zeros(n_samples)\n\n        for sample_index in range(n_samples):\n            if np.random.rand() \u003E 0.5:\n                positions[sample_index, 0] = [\n                    [0.3, 0.5], [0.35, 0.45], [0.1, 0.8], [0.7, 0.8], [0.5, 0.2]\n                ]\n                positions[sample_index, 1] = [\n                    [0.4, 0.6], [0.5, 0.5], [0.2, 0.7], [0.6, 0.7], [0.5, 0.3]\n                ]\n                labels[sample_index] = 1\n            else:\n                positions[sample_index, 0] = [\n                    [0.2, 0.3], [0.6, 0.4], [0.3, 0.7], [0.7, 0.6], [0.4, 0.2]\n                ]\n                positions[sample_index, 1] = [\n                    [0.3, 0.4], [0.5, 0.4], [0.3, 0.6], [0.5, 0.6], [0.4, 0.3]\n                ]\n                labels[sample_index] = 0\n\n            positions[sample_index] += np.random.randn(2, 5, 2) * noise\n\n        return positions, labels\n\n    def compute_rbf_kernel(point_a, point_b, sigma=1.0):\n        difference = point_a - point_b\n        return np.exp(-np.sum(difference**2) / (2 * sigma**2))\n\n    def compute_three_kernel_features(positions, sigma=1.0):\n        sample_count = positions.shape[0]\n        features = np.zeros((sample_count, 3))\n\n        for sample_index in range(sample_count):\n            offense_positions = positions[sample_index, 0]\n            defense_positions = positions[sample_index, 1]\n            offense_kernel = 0.0\n            defense_kernel = 0.0\n            cross_kernel = 0.0\n\n            for player_a in range(5):\n                for player_b in range(5):\n                    offense_kernel += compute_rbf_kernel(\n                        offense_positions[player_a], offense_positions[player_b], sigma\n                    )\n                    defense_kernel += compute_rbf_kernel(\n                        defense_positions[player_a], defense_positions[player_b], sigma\n                    )\n                    cross_kernel += compute_rbf_kernel(\n                        offense_positions[player_a], defense_positions[player_b], sigma\n                    )\n\n            features[sample_index] = [\n                offense_kernel / 25.0,\n                defense_kernel / 25.0,\n                cross_kernel / 25.0,\n            ]\n\n        return features\n\n    return compute_three_kernel_features, generate_basketball_data\n\n\n@app.cell\ndef _(plt):\n    def plot_court(axis, offense_positions, defense_positions, title):\n        axis.set_xlim(0, 1)\n        axis.set_ylim(0, 1)\n        axis.set_aspect(\"equal\")\n        axis.grid(True, alpha=0.3)\n        axis.scatter(\n            offense_positions[:, 0], offense_positions[:, 1],\n            c=\"blue\", s=100, label=\"Offense\", edgecolors=\"black\", zorder=5,\n        )\n        axis.scatter(\n            defense_positions[:, 0], defense_positions[:, 1],\n            c=\"red\", s=100, label=\"Defense\", marker=\"s\", edgecolors=\"black\", zorder=5,\n        )\n        for player_index, position in enumerate(offense_positions):\n            axis.annotate(str(player_index + 1), position, xytext=(5, 5), textcoords=\"offset points\")\n        for player_index, position in enumerate(defense_positions):\n            axis.annotate(str(player_index + 1), position, xytext=(5, 5), textcoords=\"offset points\")\n        axis.add_patch(plt.Circle((0.5, 0.5), 0.1, fill=False, color=\"gray\", linestyle=\"--\"))\n        axis.set_title(title)\n        axis.legend(loc=\"upper right\")\n\n    return (plot_court,)\n\n\n@app.cell\ndef _(generate_basketball_data, np, plot_court, plt):\n    positions, labels = generate_basketball_data()\n    sample_figure, sample_axes = plt.subplots(2, 2, figsize=(10, 10))\n    sample_axes = sample_axes.flatten()\n    success_indices = np.where(labels == 1)[0][:2]\n    failure_indices = np.where(labels == 0)[0][:2]\n\n    for sample_index, axis in zip(np.concatenate([success_indices, failure_indices]), sample_axes):\n        outcome = \"Success\" if labels[sample_index] == 1 else \"Failure\"\n        plot_court(\n            axis,\n            positions[sample_index, 0],\n            positions[sample_index, 1],\n            f\"Sample {sample_index} - {outcome}\",\n        )\n    sample_figure.tight_layout()\n    sample_figure\n    return labels, positions\n\n\n@app.cell\ndef _(\n    ConstantKernel,\n    GaussianProcessClassifier,\n    RBF,\n    WhiteKernel,\n    compute_three_kernel_features,\n    cross_val_score,\n    labels,\n    positions,\n    train_test_split,\n):\n    feature_names = [\"K_self\", \"K_opponent\", \"K_cross\"]\n    features = compute_three_kernel_features(positions)\n    train_features, test_features, train_labels, test_labels = train_test_split(\n        features, labels, test_size=0.2, random_state=42, stratify=labels\n    )\n    kernel = ConstantKernel(1.0, (1e-3, 1e3)) * RBF(1.0, (1e-2, 1e2)) + WhiteKernel(1e-3, (1e-4, 1e-1))\n    classifier = GaussianProcessClassifier(\n        kernel=kernel, n_restarts_optimizer=5, max_iter_predict=100, random_state=42\n    )\n    classifier.fit(train_features, train_labels)\n    train_predictions = classifier.predict(train_features)\n    train_probabilities = classifier.predict_proba(train_features)[:, 1]\n    test_predictions = classifier.predict(test_features)\n    test_probabilities = classifier.predict_proba(test_features)[:, 1]\n    cross_validation_scores = cross_val_score(classifier, features, labels, cv=5, scoring=\"accuracy\")\n    single_kernel_scores = []\n    for _feature_index in range(3):\n        single_features = features[:, _feature_index].reshape(-1, 1)\n        single_kernel = ConstantKernel(1.0) * RBF(1.0) + WhiteKernel(1e-3)\n        single_classifier = GaussianProcessClassifier(kernel=single_kernel, random_state=42)\n        single_kernel_scores.append(\n            cross_val_score(single_classifier, single_features, labels, cv=5, scoring=\"accuracy\").mean()\n        )\n    return (\n        cross_validation_scores,\n        feature_names,\n        features,\n        single_kernel_scores,\n        test_labels,\n        test_predictions,\n        test_probabilities,\n        train_labels,\n        train_predictions,\n        train_probabilities,\n    )\n\n\n@app.cell\ndef _(\n    accuracy_score,\n    classification_report,\n    confusion_matrix,\n    cross_validation_scores,\n    f1_score,\n    roc_auc_score,\n    test_labels,\n    test_predictions,\n    test_probabilities,\n    train_labels,\n    train_predictions,\n    train_probabilities,\n):\n    metrics = {\n        \"training_accuracy\": accuracy_score(train_labels, train_predictions),\n        \"training_f1\": f1_score(train_labels, train_predictions),\n        \"training_auc\": roc_auc_score(train_labels, train_probabilities),\n        \"test_accuracy\": accuracy_score(test_labels, test_predictions),\n        \"test_f1\": f1_score(test_labels, test_predictions),\n        \"test_auc\": roc_auc_score(test_labels, test_probabilities),\n        \"cross_validation_accuracy\": cross_validation_scores.mean(),\n        \"cross_validation_std\": cross_validation_scores.std(),\n    }\n    print(\"Training metrics:\", metrics[\"training_accuracy\"], metrics[\"training_f1\"], metrics[\"training_auc\"])\n    print(\"Test metrics:\", metrics[\"test_accuracy\"], metrics[\"test_f1\"], metrics[\"test_auc\"])\n    print(\"Five-fold accuracy:\", metrics[\"cross_validation_accuracy\"], \"+/-\", metrics[\"cross_validation_std\"])\n    print(\"\\nClassification report:\\n\", classification_report(test_labels, test_predictions, target_names=[\"Failure\", \"Success\"]))\n    print(\"Confusion matrix:\\n\", confusion_matrix(test_labels, test_predictions))\n    return\n\n\n@app.cell\ndef _(feature_names, features, labels, np, plt, single_kernel_scores):\n    feature_figure, feature_axes = plt.subplots(1, 3, figsize=(15, 5))\n    for _feature_index, feature_name in enumerate(feature_names):\n        for _label in [0, 1]:\n            mask = labels == _label\n            feature_axes[_feature_index].scatter(\n                features[mask, _feature_index], np.zeros(np.sum(mask)),\n                c=\"red\" if _label == 0 else \"blue\",\n                alpha=0.5,\n                label=\"Failure\" if _label == 0 else \"Success\",\n            )\n        feature_axes[_feature_index].set_xlabel(feature_name)\n        feature_axes[_feature_index].set_ylabel(\"Kernel density\")\n        feature_axes[_feature_index].set_title(f\"{feature_name} Distribution\")\n        feature_axes[_feature_index].legend()\n    feature_figure.tight_layout()\n    print(\"Single-kernel cross-validation scores:\", dict(zip(feature_names, single_kernel_scores)))\n    feature_figure\n    return\n\n\n@app.cell\ndef _(plt, test_labels, test_probabilities, train_labels, train_probabilities):\n    probability_figure, probability_axes = plt.subplots(1, 2, figsize=(12, 4))\n    probability_axes[0].hist(train_probabilities[train_labels == 0], bins=20, alpha=0.5, label=\"Failure\", color=\"red\")\n    probability_axes[0].hist(train_probabilities[train_labels == 1], bins=20, alpha=0.5, label=\"Success\", color=\"blue\")\n    probability_axes[0].set_xlabel(\"Predicted probability\")\n    probability_axes[0].set_ylabel(\"Frequency\")\n    probability_axes[0].set_title(\"Training Prediction Probabilities\")\n    probability_axes[0].legend()\n    probability_axes[1].hist(test_probabilities[test_labels == 0], bins=20, alpha=0.5, label=\"Failure\", color=\"red\")\n    probability_axes[1].hist(test_probabilities[test_labels == 1], bins=20, alpha=0.5, label=\"Success\", color=\"blue\")\n    probability_axes[1].set_xlabel(\"Predicted probability\")\n    probability_axes[1].set_ylabel(\"Frequency\")\n    probability_axes[1].set_title(\"Test Prediction Probabilities\")\n    probability_axes[1].legend()\n    probability_figure.tight_layout()\n    probability_figure\n    return\n\n\nif __name__ == \"__main__\":\n    app.run()\n",
+        }),
+        writable: false,
+        configurable: false,
+    });
+</script>
+<marimo-code hidden="">import%20marimo%0A%0A__generated_with%20%3D%20%220.24.0%22%0Aapp%20%3D%20marimo.App(width%3D%22full%22)%0A%0A%0A%40app.cell%0Adef%20_()%3A%0A%20%20%20%20import%20warnings%0A%0A%20%20%20%20import%20matplotlib.pyplot%20as%20plt%0A%20%20%20%20import%20numpy%20as%20np%0A%20%20%20%20from%20sklearn.gaussian_process%20import%20GaussianProcessClassifier%0A%20%20%20%20from%20sklearn.gaussian_process.kernels%20import%20ConstantKernel%2C%20RBF%2C%20WhiteKernel%0A%20%20%20%20from%20sklearn.metrics%20import%20(%0A%20%20%20%20%20%20%20%20accuracy_score%2C%0A%20%20%20%20%20%20%20%20classification_report%2C%0A%20%20%20%20%20%20%20%20confusion_matrix%2C%0A%20%20%20%20%20%20%20%20f1_score%2C%0A%20%20%20%20%20%20%20%20roc_auc_score%2C%0A%20%20%20%20)%0A%20%20%20%20from%20sklearn.model_selection%20import%20cross_val_score%2C%20train_test_split%0A%0A%20%20%20%20warnings.filterwarnings(%22ignore%22)%0A%20%20%20%20return%20(%0A%20%20%20%20%20%20%20%20ConstantKernel%2C%0A%20%20%20%20%20%20%20%20GaussianProcessClassifier%2C%0A%20%20%20%20%20%20%20%20RBF%2C%0A%20%20%20%20%20%20%20%20WhiteKernel%2C%0A%20%20%20%20%20%20%20%20accuracy_score%2C%0A%20%20%20%20%20%20%20%20classification_report%2C%0A%20%20%20%20%20%20%20%20confusion_matrix%2C%0A%20%20%20%20%20%20%20%20cross_val_score%2C%0A%20%20%20%20%20%20%20%20f1_score%2C%0A%20%20%20%20%20%20%20%20np%2C%0A%20%20%20%20%20%20%20%20plt%2C%0A%20%20%20%20%20%20%20%20roc_auc_score%2C%0A%20%20%20%20%20%20%20%20train_test_split%2C%0A%20%20%20%20)%0A%0A%0A%40app.cell%0Adef%20_(np)%3A%0A%20%20%20%20def%20generate_basketball_data(n_samples%3D500%2C%20noise%3D0.1%2C%20random_state%3D42)%3A%0A%20%20%20%20%20%20%20%20np.random.seed(random_state)%0A%20%20%20%20%20%20%20%20positions%20%3D%20np.zeros((n_samples%2C%202%2C%205%2C%202))%0A%20%20%20%20%20%20%20%20labels%20%3D%20np.zeros(n_samples)%0A%0A%20%20%20%20%20%20%20%20for%20sample_index%20in%20range(n_samples)%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20if%20np.random.rand()%20%3E%200.5%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20positions%5Bsample_index%2C%200%5D%20%3D%20%5B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%5B0.3%2C%200.5%5D%2C%20%5B0.35%2C%200.45%5D%2C%20%5B0.1%2C%200.8%5D%2C%20%5B0.7%2C%200.8%5D%2C%20%5B0.5%2C%200.2%5D%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%5D%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20positions%5Bsample_index%2C%201%5D%20%3D%20%5B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%5B0.4%2C%200.6%5D%2C%20%5B0.5%2C%200.5%5D%2C%20%5B0.2%2C%200.7%5D%2C%20%5B0.6%2C%200.7%5D%2C%20%5B0.5%2C%200.3%5D%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%5D%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20labels%5Bsample_index%5D%20%3D%201%0A%20%20%20%20%20%20%20%20%20%20%20%20else%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20positions%5Bsample_index%2C%200%5D%20%3D%20%5B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%5B0.2%2C%200.3%5D%2C%20%5B0.6%2C%200.4%5D%2C%20%5B0.3%2C%200.7%5D%2C%20%5B0.7%2C%200.6%5D%2C%20%5B0.4%2C%200.2%5D%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%5D%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20positions%5Bsample_index%2C%201%5D%20%3D%20%5B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%5B0.3%2C%200.4%5D%2C%20%5B0.5%2C%200.4%5D%2C%20%5B0.3%2C%200.6%5D%2C%20%5B0.5%2C%200.6%5D%2C%20%5B0.4%2C%200.3%5D%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%5D%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20labels%5Bsample_index%5D%20%3D%200%0A%0A%20%20%20%20%20%20%20%20%20%20%20%20positions%5Bsample_index%5D%20%2B%3D%20np.random.randn(2%2C%205%2C%202)%20*%20noise%0A%0A%20%20%20%20%20%20%20%20return%20positions%2C%20labels%0A%0A%20%20%20%20def%20compute_rbf_kernel(point_a%2C%20point_b%2C%20sigma%3D1.0)%3A%0A%20%20%20%20%20%20%20%20difference%20%3D%20point_a%20-%20point_b%0A%20%20%20%20%20%20%20%20return%20np.exp(-np.sum(difference**2)%20%2F%20(2%20*%20sigma**2))%0A%0A%20%20%20%20def%20compute_three_kernel_features(positions%2C%20sigma%3D1.0)%3A%0A%20%20%20%20%20%20%20%20sample_count%20%3D%20positions.shape%5B0%5D%0A%20%20%20%20%20%20%20%20features%20%3D%20np.zeros((sample_count%2C%203))%0A%0A%20%20%20%20%20%20%20%20for%20sample_index%20in%20range(sample_count)%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20offense_positions%20%3D%20positions%5Bsample_index%2C%200%5D%0A%20%20%20%20%20%20%20%20%20%20%20%20defense_positions%20%3D%20positions%5Bsample_index%2C%201%5D%0A%20%20%20%20%20%20%20%20%20%20%20%20offense_kernel%20%3D%200.0%0A%20%20%20%20%20%20%20%20%20%20%20%20defense_kernel%20%3D%200.0%0A%20%20%20%20%20%20%20%20%20%20%20%20cross_kernel%20%3D%200.0%0A%0A%20%20%20%20%20%20%20%20%20%20%20%20for%20player_a%20in%20range(5)%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20for%20player_b%20in%20range(5)%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20offense_kernel%20%2B%3D%20compute_rbf_kernel(%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20offense_positions%5Bplayer_a%5D%2C%20offense_positions%5Bplayer_b%5D%2C%20sigma%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20)%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20defense_kernel%20%2B%3D%20compute_rbf_kernel(%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20defense_positions%5Bplayer_a%5D%2C%20defense_positions%5Bplayer_b%5D%2C%20sigma%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20)%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20cross_kernel%20%2B%3D%20compute_rbf_kernel(%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20offense_positions%5Bplayer_a%5D%2C%20defense_positions%5Bplayer_b%5D%2C%20sigma%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20)%0A%0A%20%20%20%20%20%20%20%20%20%20%20%20features%5Bsample_index%5D%20%3D%20%5B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20offense_kernel%20%2F%2025.0%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20defense_kernel%20%2F%2025.0%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20cross_kernel%20%2F%2025.0%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%5D%0A%0A%20%20%20%20%20%20%20%20return%20features%0A%0A%20%20%20%20return%20compute_three_kernel_features%2C%20generate_basketball_data%0A%0A%0A%40app.cell%0Adef%20_(plt)%3A%0A%20%20%20%20def%20plot_court(axis%2C%20offense_positions%2C%20defense_positions%2C%20title)%3A%0A%20%20%20%20%20%20%20%20axis.set_xlim(0%2C%201)%0A%20%20%20%20%20%20%20%20axis.set_ylim(0%2C%201)%0A%20%20%20%20%20%20%20%20axis.set_aspect(%22equal%22)%0A%20%20%20%20%20%20%20%20axis.grid(True%2C%20alpha%3D0.3)%0A%20%20%20%20%20%20%20%20axis.scatter(%0A%20%20%20%20%20%20%20%20%20%20%20%20offense_positions%5B%3A%2C%200%5D%2C%20offense_positions%5B%3A%2C%201%5D%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20c%3D%22blue%22%2C%20s%3D100%2C%20label%3D%22Offense%22%2C%20edgecolors%3D%22black%22%2C%20zorder%3D5%2C%0A%20%20%20%20%20%20%20%20)%0A%20%20%20%20%20%20%20%20axis.scatter(%0A%20%20%20%20%20%20%20%20%20%20%20%20defense_positions%5B%3A%2C%200%5D%2C%20defense_positions%5B%3A%2C%201%5D%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20c%3D%22red%22%2C%20s%3D100%2C%20label%3D%22Defense%22%2C%20marker%3D%22s%22%2C%20edgecolors%3D%22black%22%2C%20zorder%3D5%2C%0A%20%20%20%20%20%20%20%20)%0A%20%20%20%20%20%20%20%20for%20player_index%2C%20position%20in%20enumerate(offense_positions)%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20axis.annotate(str(player_index%20%2B%201)%2C%20position%2C%20xytext%3D(5%2C%205)%2C%20textcoords%3D%22offset%20points%22)%0A%20%20%20%20%20%20%20%20for%20player_index%2C%20position%20in%20enumerate(defense_positions)%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20axis.annotate(str(player_index%20%2B%201)%2C%20position%2C%20xytext%3D(5%2C%205)%2C%20textcoords%3D%22offset%20points%22)%0A%20%20%20%20%20%20%20%20axis.add_patch(plt.Circle((0.5%2C%200.5)%2C%200.1%2C%20fill%3DFalse%2C%20color%3D%22gray%22%2C%20linestyle%3D%22--%22))%0A%20%20%20%20%20%20%20%20axis.set_title(title)%0A%20%20%20%20%20%20%20%20axis.legend(loc%3D%22upper%20right%22)%0A%0A%20%20%20%20return%20(plot_court%2C)%0A%0A%0A%40app.cell%0Adef%20_(generate_basketball_data%2C%20np%2C%20plot_court%2C%20plt)%3A%0A%20%20%20%20positions%2C%20labels%20%3D%20generate_basketball_data()%0A%20%20%20%20sample_figure%2C%20sample_axes%20%3D%20plt.subplots(2%2C%202%2C%20figsize%3D(10%2C%2010))%0A%20%20%20%20sample_axes%20%3D%20sample_axes.flatten()%0A%20%20%20%20success_indices%20%3D%20np.where(labels%20%3D%3D%201)%5B0%5D%5B%3A2%5D%0A%20%20%20%20failure_indices%20%3D%20np.where(labels%20%3D%3D%200)%5B0%5D%5B%3A2%5D%0A%0A%20%20%20%20for%20sample_index%2C%20axis%20in%20zip(np.concatenate(%5Bsuccess_indices%2C%20failure_indices%5D)%2C%20sample_axes)%3A%0A%20%20%20%20%20%20%20%20outcome%20%3D%20%22Success%22%20if%20labels%5Bsample_index%5D%20%3D%3D%201%20else%20%22Failure%22%0A%20%20%20%20%20%20%20%20plot_court(%0A%20%20%20%20%20%20%20%20%20%20%20%20axis%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20positions%5Bsample_index%2C%200%5D%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20positions%5Bsample_index%2C%201%5D%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20f%22Sample%20%7Bsample_index%7D%20-%20%7Boutcome%7D%22%2C%0A%20%20%20%20%20%20%20%20)%0A%20%20%20%20sample_figure.tight_layout()%0A%20%20%20%20sample_figure%0A%20%20%20%20return%20labels%2C%20positions%0A%0A%0A%40app.cell%0Adef%20_(%0A%20%20%20%20ConstantKernel%2C%0A%20%20%20%20GaussianProcessClassifier%2C%0A%20%20%20%20RBF%2C%0A%20%20%20%20WhiteKernel%2C%0A%20%20%20%20compute_three_kernel_features%2C%0A%20%20%20%20cross_val_score%2C%0A%20%20%20%20labels%2C%0A%20%20%20%20positions%2C%0A%20%20%20%20train_test_split%2C%0A)%3A%0A%20%20%20%20feature_names%20%3D%20%5B%22K_self%22%2C%20%22K_opponent%22%2C%20%22K_cross%22%5D%0A%20%20%20%20features%20%3D%20compute_three_kernel_features(positions)%0A%20%20%20%20train_features%2C%20test_features%2C%20train_labels%2C%20test_labels%20%3D%20train_test_split(%0A%20%20%20%20%20%20%20%20features%2C%20labels%2C%20test_size%3D0.2%2C%20random_state%3D42%2C%20stratify%3Dlabels%0A%20%20%20%20)%0A%20%20%20%20kernel%20%3D%20ConstantKernel(1.0%2C%20(1e-3%2C%201e3))%20*%20RBF(1.0%2C%20(1e-2%2C%201e2))%20%2B%20WhiteKernel(1e-3%2C%20(1e-4%2C%201e-1))%0A%20%20%20%20classifier%20%3D%20GaussianProcessClassifier(%0A%20%20%20%20%20%20%20%20kernel%3Dkernel%2C%20n_restarts_optimizer%3D5%2C%20max_iter_predict%3D100%2C%20random_state%3D42%0A%20%20%20%20)%0A%20%20%20%20classifier.fit(train_features%2C%20train_labels)%0A%20%20%20%20train_predictions%20%3D%20classifier.predict(train_features)%0A%20%20%20%20train_probabilities%20%3D%20classifier.predict_proba(train_features)%5B%3A%2C%201%5D%0A%20%20%20%20test_predictions%20%3D%20classifier.predict(test_features)%0A%20%20%20%20test_probabilities%20%3D%20classifier.predict_proba(test_features)%5B%3A%2C%201%5D%0A%20%20%20%20cross_validation_scores%20%3D%20cross_val_score(classifier%2C%20features%2C%20labels%2C%20cv%3D5%2C%20scoring%3D%22accuracy%22)%0A%20%20%20%20single_kernel_scores%20%3D%20%5B%5D%0A%20%20%20%20for%20_feature_index%20in%20range(3)%3A%0A%20%20%20%20%20%20%20%20single_features%20%3D%20features%5B%3A%2C%20_feature_index%5D.reshape(-1%2C%201)%0A%20%20%20%20%20%20%20%20single_kernel%20%3D%20ConstantKernel(1.0)%20*%20RBF(1.0)%20%2B%20WhiteKernel(1e-3)%0A%20%20%20%20%20%20%20%20single_classifier%20%3D%20GaussianProcessClassifier(kernel%3Dsingle_kernel%2C%20random_state%3D42)%0A%20%20%20%20%20%20%20%20single_kernel_scores.append(%0A%20%20%20%20%20%20%20%20%20%20%20%20cross_val_score(single_classifier%2C%20single_features%2C%20labels%2C%20cv%3D5%2C%20scoring%3D%22accuracy%22).mean()%0A%20%20%20%20%20%20%20%20)%0A%20%20%20%20return%20(%0A%20%20%20%20%20%20%20%20cross_validation_scores%2C%0A%20%20%20%20%20%20%20%20feature_names%2C%0A%20%20%20%20%20%20%20%20features%2C%0A%20%20%20%20%20%20%20%20single_kernel_scores%2C%0A%20%20%20%20%20%20%20%20test_labels%2C%0A%20%20%20%20%20%20%20%20test_predictions%2C%0A%20%20%20%20%20%20%20%20test_probabilities%2C%0A%20%20%20%20%20%20%20%20train_labels%2C%0A%20%20%20%20%20%20%20%20train_predictions%2C%0A%20%20%20%20%20%20%20%20train_probabilities%2C%0A%20%20%20%20)%0A%0A%0A%40app.cell%0Adef%20_(%0A%20%20%20%20accuracy_score%2C%0A%20%20%20%20classification_report%2C%0A%20%20%20%20confusion_matrix%2C%0A%20%20%20%20cross_validation_scores%2C%0A%20%20%20%20f1_score%2C%0A%20%20%20%20roc_auc_score%2C%0A%20%20%20%20test_labels%2C%0A%20%20%20%20test_predictions%2C%0A%20%20%20%20test_probabilities%2C%0A%20%20%20%20train_labels%2C%0A%20%20%20%20train_predictions%2C%0A%20%20%20%20train_probabilities%2C%0A)%3A%0A%20%20%20%20metrics%20%3D%20%7B%0A%20%20%20%20%20%20%20%20%22training_accuracy%22%3A%20accuracy_score(train_labels%2C%20train_predictions)%2C%0A%20%20%20%20%20%20%20%20%22training_f1%22%3A%20f1_score(train_labels%2C%20train_predictions)%2C%0A%20%20%20%20%20%20%20%20%22training_auc%22%3A%20roc_auc_score(train_labels%2C%20train_probabilities)%2C%0A%20%20%20%20%20%20%20%20%22test_accuracy%22%3A%20accuracy_score(test_labels%2C%20test_predictions)%2C%0A%20%20%20%20%20%20%20%20%22test_f1%22%3A%20f1_score(test_labels%2C%20test_predictions)%2C%0A%20%20%20%20%20%20%20%20%22test_auc%22%3A%20roc_auc_score(test_labels%2C%20test_probabilities)%2C%0A%20%20%20%20%20%20%20%20%22cross_validation_accuracy%22%3A%20cross_validation_scores.mean()%2C%0A%20%20%20%20%20%20%20%20%22cross_validation_std%22%3A%20cross_validation_scores.std()%2C%0A%20%20%20%20%7D%0A%20%20%20%20print(%22Training%20metrics%3A%22%2C%20metrics%5B%22training_accuracy%22%5D%2C%20metrics%5B%22training_f1%22%5D%2C%20metrics%5B%22training_auc%22%5D)%0A%20%20%20%20print(%22Test%20metrics%3A%22%2C%20metrics%5B%22test_accuracy%22%5D%2C%20metrics%5B%22test_f1%22%5D%2C%20metrics%5B%22test_auc%22%5D)%0A%20%20%20%20print(%22Five-fold%20accuracy%3A%22%2C%20metrics%5B%22cross_validation_accuracy%22%5D%2C%20%22%2B%2F-%22%2C%20metrics%5B%22cross_validation_std%22%5D)%0A%20%20%20%20print(%22%5CnClassification%20report%3A%5Cn%22%2C%20classification_report(test_labels%2C%20test_predictions%2C%20target_names%3D%5B%22Failure%22%2C%20%22Success%22%5D))%0A%20%20%20%20print(%22Confusion%20matrix%3A%5Cn%22%2C%20confusion_matrix(test_labels%2C%20test_predictions))%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_(feature_names%2C%20features%2C%20labels%2C%20np%2C%20plt%2C%20single_kernel_scores)%3A%0A%20%20%20%20feature_figure%2C%20feature_axes%20%3D%20plt.subplots(1%2C%203%2C%20figsize%3D(15%2C%205))%0A%20%20%20%20for%20_feature_index%2C%20feature_name%20in%20enumerate(feature_names)%3A%0A%20%20%20%20%20%20%20%20for%20_label%20in%20%5B0%2C%201%5D%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20mask%20%3D%20labels%20%3D%3D%20_label%0A%20%20%20%20%20%20%20%20%20%20%20%20feature_axes%5B_feature_index%5D.scatter(%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20features%5Bmask%2C%20_feature_index%5D%2C%20np.zeros(np.sum(mask))%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20c%3D%22red%22%20if%20_label%20%3D%3D%200%20else%20%22blue%22%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20alpha%3D0.5%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20label%3D%22Failure%22%20if%20_label%20%3D%3D%200%20else%20%22Success%22%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20)%0A%20%20%20%20%20%20%20%20feature_axes%5B_feature_index%5D.set_xlabel(feature_name)%0A%20%20%20%20%20%20%20%20feature_axes%5B_feature_index%5D.set_ylabel(%22Kernel%20density%22)%0A%20%20%20%20%20%20%20%20feature_axes%5B_feature_index%5D.set_title(f%22%7Bfeature_name%7D%20Distribution%22)%0A%20%20%20%20%20%20%20%20feature_axes%5B_feature_index%5D.legend()%0A%20%20%20%20feature_figure.tight_layout()%0A%20%20%20%20print(%22Single-kernel%20cross-validation%20scores%3A%22%2C%20dict(zip(feature_names%2C%20single_kernel_scores)))%0A%20%20%20%20feature_figure%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_(plt%2C%20test_labels%2C%20test_probabilities%2C%20train_labels%2C%20train_probabilities)%3A%0A%20%20%20%20probability_figure%2C%20probability_axes%20%3D%20plt.subplots(1%2C%202%2C%20figsize%3D(12%2C%204))%0A%20%20%20%20probability_axes%5B0%5D.hist(train_probabilities%5Btrain_labels%20%3D%3D%200%5D%2C%20bins%3D20%2C%20alpha%3D0.5%2C%20label%3D%22Failure%22%2C%20color%3D%22red%22)%0A%20%20%20%20probability_axes%5B0%5D.hist(train_probabilities%5Btrain_labels%20%3D%3D%201%5D%2C%20bins%3D20%2C%20alpha%3D0.5%2C%20label%3D%22Success%22%2C%20color%3D%22blue%22)%0A%20%20%20%20probability_axes%5B0%5D.set_xlabel(%22Predicted%20probability%22)%0A%20%20%20%20probability_axes%5B0%5D.set_ylabel(%22Frequency%22)%0A%20%20%20%20probability_axes%5B0%5D.set_title(%22Training%20Prediction%20Probabilities%22)%0A%20%20%20%20probability_axes%5B0%5D.legend()%0A%20%20%20%20probability_axes%5B1%5D.hist(test_probabilities%5Btest_labels%20%3D%3D%200%5D%2C%20bins%3D20%2C%20alpha%3D0.5%2C%20label%3D%22Failure%22%2C%20color%3D%22red%22)%0A%20%20%20%20probability_axes%5B1%5D.hist(test_probabilities%5Btest_labels%20%3D%3D%201%5D%2C%20bins%3D20%2C%20alpha%3D0.5%2C%20label%3D%22Success%22%2C%20color%3D%22blue%22)%0A%20%20%20%20probability_axes%5B1%5D.set_xlabel(%22Predicted%20probability%22)%0A%20%20%20%20probability_axes%5B1%5D.set_ylabel(%22Frequency%22)%0A%20%20%20%20probability_axes%5B1%5D.set_title(%22Test%20Prediction%20Probabilities%22)%0A%20%20%20%20probability_axes%5B1%5D.legend()%0A%20%20%20%20probability_figure.tight_layout()%0A%20%20%20%20probability_figure%0A%20%20%20%20return%0A%0A%0Aif%20__name__%20%3D%3D%20%22__main__%22%3A%0A%20%20%20%20app.run()%0A</marimo-code></head>
+  <body>
+    <div id="root"></div>
+    <script data-marimo="true">
+      Object.defineProperty(window, "__MARIMO_MOUNT_CONFIG__", {
+        value: Object.freeze({
+            "filename": "notebook.py",
+            "cwd": "",
+            "lspWorkspace": null,
+            "mode": "read",
+            "version": "0.24.0",
+            "serverToken": "unused",
+            "config": {"ai": {"custom_providers": {}, "enabled": true, "models": {"custom_models": [], "displayed_models": []}}, "completion": {"activate_on_typing": true, "auto_close_pairs": true, "copilot": false, "signature_hint_on_typing": false}, "diagnostics": {"sql_linter": true}, "display": {"cell_output": "below", "code_editor_font_size": 14, "code_lens": true, "dataframes": "rich", "default_table_max_columns": 50, "default_table_page_size": 10, "default_width": "medium", "reference_highlighting": true, "theme": "light"}, "formatting": {"line_length": 79}, "keymap": {"overrides": {}, "preset": "default"}, "language_servers": {"pylsp": {"enable_flake8": false, "enable_mypy": true, "enable_pydocstyle": false, "enable_pyflakes": false, "enable_pylint": false, "enable_ruff": true, "enabled": false}}, "mcp": {"mcpServers": {}, "presets": []}, "package_management": {"manager": "pip"}, "runtime": {"auto_instantiate": false, "auto_reload": "off", "default_csv_encoding": "utf-8", "default_sql_output": "auto", "on_cell_change": "autorun", "output_max_bytes": 8000000, "reactive_tests": true, "show_tracebacks": false, "std_stream_max_bytes": 1000000, "watcher_on_save": "lazy"}, "save": {"autosave": "off", "autosave_delay": 1000, "format_on_save": false}, "server": {"browser": "default", "follow_symlink": false}, "snippets": {"custom_paths": [], "include_default_snippets": true}},
+            "configOverrides": {},
+            "appConfig": {"sql_output": "auto", "width": "full"},
+            "view": {"showAppCode": false},
+            "notebook": null,
+            "session": null,
+            "runtimeConfig": null,
+        }),
+        writable: false,
+        configurable: false,
+      });
+    </script>
+  </body>
+</html>
